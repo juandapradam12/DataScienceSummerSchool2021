@@ -1,0 +1,193 @@
+--
+title: "Lab 1 Social media experiments"
+output: html_document
+author: Katharina Lawall
+---
+
+# Step 1: Change the root directory
+
+```{r setup, include=FALSE, cache=FALSE}
+
+
+rm(list=ls())
+require("knitr")
+knitr::opts_knit$set(root.dir = "C:/Users/katha/Dropbox/Social-Media-Experiments/Lab1") 
+
+getwd()
+```
+
+# Step 2: Load packages
+
+```{r libraries, include=FALSE, cache = FALSE}
+library(dplyr)
+library(randomizr)
+library(foreign)
+library(estimatr)
+
+```
+
+
+# Step 3: Reading in data
+
+
+```{r readdata, echo=FALSE}
+data<-read.csv(file = "Data/data_anonymized_standard_assumption.csv")
+
+
+```
+
+# Step 4: Explore the data
+
+What are the outcome variables? What are anonymity and log.followers? How many observations are there? 
+
+```{r explore1, echo=FALSE}
+
+data %>% head()
+data %>% nrow()
+```
+
+What is treat.f? 
+
+```{r explore2, echo=FALSE}
+
+data %>% group_by(treat.f, In_group, high_followers) %>% count()
+```
+
+# Step 5: Random assignment
+
+```{r assign, echo=FALSE}
+
+
+
+# Simple random assignment to two groups
+set.seed(123)
+
+data <- data %>% mutate (assignment_simple = simple_ra(N = nrow(data), num_arms = 2))
+
+data %>% group_by(assignment_simple) %>% count()
+
+
+
+# Complete random assignment to two groups
+set.seed(123)
+
+data <- data %>% mutate (assignment_complete = complete_ra(N = nrow(data), num_arms = 2))
+
+data %>% group_by(assignment_complete) %>% count()
+
+#Q. What's the difference between simple and complete RA? Why is it important to set a seed? 
+
+
+```
+
+# Exercise 5A. 
+
+Recreate the random assignment from the Munger experiment. How many treatment and control groups do you need? Are you going to use simple or complete RA? Bonus: can you name the treatment and control groups? 
+
+```{r assign_ex, echo=FALSE}
+
+
+
+```
+
+# Step 6: Analysis
+
+```{r analyse, echo=FALSE}
+data$treat.f<-as.factor(data$treat.f) # recode as factor
+
+##first model
+
+wk1_rac<-summary(lm_robust(racism.scores.post.1wk ~ treat.f + log.followers +  racism.scores.pre.2mon, data = data))
+
+wk1_rac
+
+##second model looks only at the most anonymous users
+
+wk1_rac_anon<-summary(lm_robust(racism.scores.post.1wk ~ treat.f  + log.followers + racism.scores.pre.2mon, 
+                         data = filter(data,anonymity>1) ))
+
+wk1_rac_anon
+```
+
+
+# Exercise 6A. 
+
+Let's estimate a third model for non-anonymous users:  
+
+How do you interpret this? 
+
+```{r analyse_6a, echo=FALSE}
+
+
+
+
+
+```
+
+
+
+# Step 7: Graphs
+
+```{r graphs, echo=FALSE}
+
+wk1_models<-list(wk1_rac)
+
+wk1_modelnames<-list("wk1_rac")
+
+
+
+##plot the wk1 models, with axis labels
+
+for (i in 1:length(wk1_models)){
+  ##change length, one fewer coefficient
+  coefs <- t(t(c(wk1_models[[i]]$coefficients[2:6,1])))
+  ses <- t(t(c(wk1_models[[i]]$coefficients[2:6,2])))
+  y.axis <- c(1:5)
+  #fix x axis to the max values any coefficients take for comparison
+  min <- (-.65)
+  max <- .55
+  var.names <- c("In-Group/Low","Out-Group/Low","In-Group/High","Out-Group/High", "Log Followers")
+  adjust <- 0
+  ##########################
+  ###change filename depending on the data source
+  ##########################
+  pdf(paste0(wk1_modelnames[i], ".pdf"), 5, 7)
+  par(mar=c(4,6,1,1))
+  
+  plot(coefs[,1], y.axis, type = "p", axes = F, xlab = "Change in Average Daily Slur Use", ylab = "", pch = 19, cex = .8, 
+       xlim=c(min,max),ylim = c(.5,5.5), main = "")
+  rect(min,.5,max,1.5, col = c("grey97"), border="grey90", lty = 2)
+  rect(min,1.5,max,2.5, col = c("grey95"), border="grey90", lty = 2)
+  rect(min,2.5,max,3.5, col = c("grey97"), border="grey90", lty = 2)
+  rect(min,3.5,max,4.5, col = c("grey95"), border="grey90", lty = 2)
+  rect(min,4.5,max,5.5, col = c("grey97"), border="grey90", lty = 2)
+  
+  axis(1, tick = T,cex.axis = .75, mgp = c(2,.7,0))
+  axis(2, at = y.axis, label = var.names, las = 1, tick = FALSE, cex.axis =.8, hadj=1)
+  abline(h = y.axis, lty = 2, lwd = .5, col = "white")
+  segments(coefs[,1]-qnorm(.975)*ses[,1], y.axis+2*adjust, coefs[,1]+qnorm(.975)*ses[,1], y.axis+2*adjust, lwd =  1)
+  
+  segments(coefs[,1]-qnorm(.95)*ses[,1], y.axis+2*adjust-.035, coefs[,1]-qnorm(.95)*ses[,1], y.axis+2*adjust+.035, lwd = .9)
+  segments(coefs[,1]+qnorm(.95)*ses[,1], y.axis+2*adjust-.035, coefs[,1]+qnorm(.95)*ses[,1], y.axis+2*adjust+.035, lwd = .9)
+  points(coefs[,1], y.axis+2*adjust,pch=21,cex=.8, bg="white")
+  abline(v=0, lty = 2) # draw dotted line through 0 for reference line for null sign ificance hypothesis testing
+  
+  
+
+  dev.off()
+  
+}
+
+```
+
+# Additional material: Exercise 6B. 
+Let's estimate all three models for the week 2 outcomes: 
+
+How do you interpret the results? How does this compare to week 1 outcomes?
+  
+```{r analyse_6b, echo=FALSE}
+
+
+
+```
+
