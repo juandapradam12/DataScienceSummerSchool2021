@@ -373,3 +373,4 @@ plotit2 <- function(d,effect.label,x.lower = NULL,x.upper = NULL,nrows = 1){
   return(p)
   
 }
+

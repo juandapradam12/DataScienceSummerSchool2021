@@ -31,3 +31,4 @@ install.packages("rmarkdown", dep = TRUE)
 # Knitr to create html / pdf files from Markdown
 
 install.packages("knitr")
+
