@@ -22,3 +22,7 @@ Python · Keras · Jupyter
 ## Takeaway
 
 Bridges “images as matrices” to a working deep-learning classification pipeline — the same pattern used in applied image measurement.
+
+## What I take away
+
+Images are tensors: normalize, encode labels, pick a CNN inductive bias, and evaluate on held-out pixels — the same measurement mindset as with tabular or text data.

@@ -24,3 +24,7 @@ Design, randomization, and analysis for experiments that run in online / social-
 ## Tools
 
 R · `tidyverse` · `randomizr` · `ri2` · `estimatr` · R Markdown
+
+## What I take away
+
+Online experiments still live or die on design: clear estimands, proper randomization, and inference that respects clustering / interference when units are not independent.

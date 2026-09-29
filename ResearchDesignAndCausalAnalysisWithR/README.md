@@ -25,3 +25,7 @@ R · Jupyter (R kernel) · base `lm` simulations
 ## Takeaway
 
 Shows when adding covariates helps identification — and when it hurts — using transparent simulated DGPs rather than black-box software.
+
+## What I take away
+
+Before adding covariates, ask what the DAG implies. Simulations make confounding and post-treatment bias visceral — a habit I use before trusting any observational regression.

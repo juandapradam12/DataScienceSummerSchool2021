@@ -11,7 +11,8 @@ author: Florian Foos
 
 rm(list=ls())
 require("knitr")
-knitr::opts_knit$set(root.dir = "~/Foos Lab Dropbox/Florian Foos/Social-Media-Experiments/Lab2") 
+# Use the Lab folder as the working directory when knitting locally.
+# knitr::opts_knit$set(root.dir = normalizePath(".")) 
 
 getwd()
 ```

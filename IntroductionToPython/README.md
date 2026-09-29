@@ -27,3 +27,7 @@ Python 3 · Jupyter / Google Colab
 ## Original workshop
 
 Instructors: Milena Tsvetkova & Yuanmo He (LSE). Materials adapted from the [python-workshop](https://github.com/social-research/python-workshop) course pack.
+
+## What I take away
+
+Enough Python to move from “I can follow a notebook” to writing small, reusable scripts for cleaning and exploring social-science data — including a concrete speech-comparison workflow.

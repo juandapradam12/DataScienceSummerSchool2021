@@ -11,7 +11,8 @@ author: Katharina Lawall
 
 rm(list=ls())
 require("knitr")
-knitr::opts_knit$set(root.dir = "C:/Users/katha/Dropbox/Social-Media-Experiments/Lab1") 
+# Use the Lab folder as the working directory when knitting locally.
+# knitr::opts_knit$set(root.dir = normalizePath(".")) 
 
 getwd()
 ```

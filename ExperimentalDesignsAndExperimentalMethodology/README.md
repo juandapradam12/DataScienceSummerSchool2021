@@ -26,3 +26,7 @@ R · `ggplot2` · `dplyr` · `lmtest` / `sandwich`
 ## Takeaway
 
 Connects experimental design choices to transparent, publication-style effect visualizations.
+
+## What I take away
+
+Conjoint designs turn multi-attribute preferences into estimable contrasts; effect plots are how those contrasts get communicated without dumping a giant regression table.

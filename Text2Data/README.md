@@ -26,3 +26,7 @@ R · `quanteda` · `quanteda.textmodels` · `stm` · `tidyverse` · `ggrepel`
 ## How to browse
 
 Each exercise folder contains an `.R` script (and often a rendered `.html`). Open the project folder first so relative data paths resolve.
+
+## What I take away
+
+A full text-as-data ladder in R: corpus → supervised classification → STM topics → scaling. I reach for this stack when the documents are political or legislative and the workflow should stay in quanteda.

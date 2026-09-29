@@ -19,3 +19,7 @@ Open that site for the current lab notebooks and examples; keep this folder as t
 ## Tools
 
 R · `sf` / spatial ecosystem (as used in the linked course)
+
+## What I take away
+
+*(External labs.)* Spatial joins, CRS discipline, and map-first EDA are the habits; the live course site is the hands-on source until local notebooks are added here.

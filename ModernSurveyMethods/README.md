@@ -25,3 +25,7 @@ R · `lme4` · `autoMrP` · `haven` · `arm`
 ## How to run
 
 Open R in `Lab/` (so relative paths to `.dta` / `.Rda` resolve), then source `Family_P_Code.R`.
+
+## What I take away
+
+National margins are not enough for local questions. MrP-style models let survey microdata speak at finer geographies when paired with a good poststratification frame.

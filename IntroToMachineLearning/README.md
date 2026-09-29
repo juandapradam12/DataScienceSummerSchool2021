@@ -27,3 +27,7 @@ R · Jupyter · `mlr3` ecosystem
 ## Original course
 
 Marcel Neunhoeffer (LMU) & Christian Arnold (Cardiff). Upstream: [mneunhoe/ds3_ml](https://github.com/mneunhoe/ds3_ml).
+
+## What I take away
+
+Implementing logit from scratch builds intuition for loss and regularization; `mlr3` then shows how that estimator sits inside a repeatable train–resample–evaluate workflow.

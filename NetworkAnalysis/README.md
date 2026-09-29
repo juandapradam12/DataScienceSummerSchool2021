@@ -19,3 +19,7 @@ Structure, generative models, and dynamics on networks.
 ## Note
 
 This module is slide-led (large PDFs). Use it as a conceptual reference alongside the computational modules elsewhere in the portfolio.
+
+## What I take away
+
+*(Slide reference.)* Networks change which units are independent and how influence spreads — useful framing even when the empirical work lives in other modules’ code.

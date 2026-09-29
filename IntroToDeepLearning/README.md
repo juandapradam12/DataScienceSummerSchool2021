@@ -26,3 +26,7 @@ Python · Keras / TensorFlow · Google Colab–friendly notebooks
 ## Original course
 
 Christian Arnold — CIVICA Data Science Summer School, 2021.
+
+## What I take away
+
+Deep learning is still train / validation / test discipline plus capacity control. MNIST and tabular nets were practice for reading learning curves before chasing architecture novelty.

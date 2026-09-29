@@ -31,3 +31,7 @@ From `code/`:
 source("basic_graphs.R")
 # source("advanced_lab.R")
 ```
+
+## What I take away
+
+Graphics are part of the argument: choose the mark (bar, line, density, map) that matches the comparison you need, then strip chart junk until the claim is obvious.

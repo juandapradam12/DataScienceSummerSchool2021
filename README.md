@@ -1,15 +1,37 @@
 # Data Science Summer School 2021
 
 **Portfolio of techniques from the CIVICA / Hertie School Data Science Summer School (DS³)**  
-Collected and organized by [Juan David Prada](https://github.com/juandapradam12)
+Juan David Prada · [GitHub](https://github.com/juandapradam12)
 
-This repository is a curated learning portfolio: labs, notebooks, and notes covering the full stack of modern computational social science — from research design and causal inference to machine learning, text-as-data, networks, and web data collection.
+A curated learning portfolio: labs and notebooks across modern computational social science — research design, experiments, surveys, ML/DL, text-as-data, networks, spatial analysis, and web data collection.
+
+**Stack:** R · Python · scikit-learn · quanteda · mlr3 · Keras · tidyverse
+
+---
+
+## Start here (≈15 minutes)
+
+1. **[`showcase/`](showcase/)** — end-to-end text classification case study (TF–IDF → logistic regression → held-out metrics → coefficient plots). Macro-F1 ≈ 0.88.
+2. **[`ResearchDesignAndCausalAnalysisWithR/`](ResearchDesignAndCausalAnalysisWithR/)** — when controls help vs. hurt (confounding & post-treatment bias by simulation).
+3. **[`IntroToMachineLearning/`](IntroToMachineLearning/)** — logistic regression from scratch, then `mlr3`.
+
+Then skim the capability map below and dive into the modules that match the role or project you care about.
+
+---
+
+## What I take away from DS³
+
+| I can… | Evidence in this repo |
+|---|---|
+| Argue about identification before fitting a model | Causal simulations, conjoint & social-media experiment labs |
+| Build honest supervised baselines for text | Showcase + NLP / Text2Data modules |
+| Move from toy estimators to a real ML workflow | Logit-from-scratch → `mlr3` |
+| Collect web data responsibly | APIs, HTML scraping, Selenium |
+| Communicate results with clear graphics | Visualization labs + showcase figures |
 
 ---
 
 ## Why this repo
-
-DS³ is an intensive program for social scientists who want to **collect, model, and communicate evidence with code**. The materials here show hands-on practice with the methods that matter in applied research and data work:
 
 | Capability | What you will find |
 |---|---|
@@ -21,7 +43,7 @@ DS³ is an intensive program for social scientists who want to **collect, model,
 | **Text as data** | Corpora, classification, topic models, ideal-point style scaling |
 | **NLP pipelines** | TF–IDF, supervised text classification, topic modeling on reviews |
 | **Networks** | Structure, generative models, spreading processes |
-| **Spatial analysis** | Geo-data workflows in R |
+| **Spatial analysis** | Geo-data workflows in R (linked course materials) |
 | **Visualization** | Publication-ready graphs in base R / ggplot-oriented labs |
 | **Data collection** | REST APIs, HTML scraping, Selenium automation |
 | **Programming** | Python fundamentals for computational social science |
@@ -30,7 +52,13 @@ DS³ is an intensive program for social scientists who want to **collect, model,
 
 ## Repository map
 
-Materials are grouped by theme. Each folder has its own `README` with techniques, tools, and key files.
+Each folder has a `README` with techniques, tools, key files, and a short personal takeaway.
+
+### Showcase
+
+| Module | Focus |
+|---|---|
+| [`showcase/`](showcase/) | Polished case study: predict wine country from review text |
 
 ### 1. Foundations
 
@@ -62,20 +90,18 @@ Materials are grouped by theme. Each folder has its own `README` with techniques
 |---|---|
 | [`Text2Data/`](Text2Data/) | quanteda corpus workflows: intro → classification → STM → scaling |
 | [`NaturalLanguageProcessing/`](NaturalLanguageProcessing/) | Sklearn text classification & topic models on wine reviews |
-| [`NetworkAnalysis/`](NetworkAnalysis/) | Network structure, models, and contagion / spreading |
+| [`NetworkAnalysis/`](NetworkAnalysis/) | Network structure, models, and contagion *(slide reference)* |
 
 ### 5. Spatial data & collection
 
 | Module | Focus |
 |---|---|
-| [`GeoDataAndSpatialDataAnalysisWithR/`](GeoDataAndSpatialDataAnalysisWithR/) | Spatial data analysis course materials (external lab site) |
+| [`GeoDataAndSpatialDataAnalysisWithR/`](GeoDataAndSpatialDataAnalysisWithR/) | Spatial analysis pointer to the live course site *(external labs)* |
 | [`WebScrapingWithR/`](WebScrapingWithR/) | APIs, open-web scraping, Selenium |
 
 ---
 
 ## Technique index
-
-Jump straight to the method you care about:
 
 - **Causal identification & simulation** → [`ResearchDesignAndCausalAnalysisWithR/`](ResearchDesignAndCausalAnalysisWithR/)
 - **Conjoint AMCE-style analysis** → [`ExperimentalDesignsAndExperimentalMethodology/experiment/`](ExperimentalDesignsAndExperimentalMethodology/experiment/)
@@ -84,7 +110,8 @@ Jump straight to the method you care about:
 - **Logistic regression from scratch + mlr3** → [`IntroToMachineLearning/`](IntroToMachineLearning/)
 - **Neural nets (MNIST, Boston housing)** → [`IntroToDeepLearning/`](IntroToDeepLearning/)
 - **CNNs on images** → [`ImageAsData/RetrainingACNN.ipynb`](ImageAsData/RetrainingACNN.ipynb)
-- **Corpus construction, keyness, Naive Bayes, STM, Wordfish/Wordscores-style scaling** → [`Text2Data/exercises/`](Text2Data/exercises/)
+- **End-to-end text classification showcase** → [`showcase/`](showcase/)
+- **Corpus construction, keyness, Naive Bayes, STM, scaling** → [`Text2Data/exercises/`](Text2Data/exercises/)
 - **TF–IDF + supervised NLP; topic models** → [`NaturalLanguageProcessing/`](NaturalLanguageProcessing/)
 - **Network metrics, models, epidemics on graphs** → [`NetworkAnalysis/`](NetworkAnalysis/)
 - **Twitter / NYT APIs, CSS selectors, Selenium** → [`WebScrapingWithR/`](WebScrapingWithR/)
@@ -92,34 +119,31 @@ Jump straight to the method you care about:
 
 ---
 
-## Stack
+## Setup
 
-| Language | Typical libraries |
-|---|---|
-| **R** | `tidyverse`, `quanteda`, `stm`, `mlr3`, `lme4`, `estimatr`, `ri2`, `rvest` / API clients |
-| **Python** | `numpy` / scientific stack, `scikit-learn`, `keras` / TensorFlow, Jupyter |
+Python notebooks (showcase, NLP, deep learning):
 
-Notebooks marked for Colab can be opened in the browser; R labs are meant to be run from the module folder (relative paths preferred).
+```bash
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+R labs assume a recent R / RStudio with packages listed in each module README (`tidyverse`, `quanteda`, `mlr3`, `lme4`, etc.).
+
+> Some lecture PDFs are large (especially Network Analysis). Prefer notebooks and `.R` labs for hands-on review.
 
 ---
 
-## How to browse
+## Suggested GitHub repo settings
 
-1. Start with this README to pick a theme.
-2. Open the module `README` for learning outcomes and file pointers.
-3. Prefer notebooks / `.R` labs over slide PDFs when you want executable practice; use PDFs for theory and lecture context.
+To make the landing page match this portfolio, set on GitHub → Settings:
 
-> **Note:** Slide decks and some datasets are large. Clone with git LFS only if you later add it; otherwise a normal clone is enough.
+- **Description:** `CIVICA / Hertie DS³ 2021 portfolio — causal inference, experiments, ML/DL, text-as-data, and web data collection in R & Python`
+- **Topics:** `data-science`, `computational-social-science`, `causal-inference`, `machine-learning`, `nlp`, `r`, `python`, `text-as-data`, `survey-methods`, `web-scraping`
 
 ---
 
 ## Attribution
 
-Course content originates from the **CIVICA Data Science Summer School / Hertie School Data Lab (2021)** and the instructors who taught each module. Original course READMEs and licenses are preserved where present (e.g. web scraping materials). This portfolio reorganizes and documents those materials as a personal learning record.
-
----
-
-## Author
-
-**Juan David Prada** — data scientist.  
-Portfolio focus: turning methods training into clear, reproducible analytical practice.
+Course content originates from DS³ instructors; see [`ATTRIBUTION.md`](ATTRIBUTION.md). Original licenses are preserved where present (e.g. web scraping materials).

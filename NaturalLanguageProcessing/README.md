@@ -30,3 +30,7 @@ Practical NLP in Python: supervised text classification and unsupervised topic m
 ## Tools
 
 Python · scikit-learn · pandas · Jupyter · (spaCy concepts for cleaning)
+
+## What I take away
+
+Sklearn pipelines make text projects shippable: freeze the vectorizer, validate on held-out data, then inspect errors. Pair with the [`showcase/`](../showcase/) notebook for a cleaned-up version of the classification lab.

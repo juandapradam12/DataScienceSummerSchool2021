@@ -26,3 +26,7 @@ R · `tidyverse` · API packages · `rvest` · Selenium bindings
 ## Original course
 
 Rochelle Terman (University of Chicago) — [Data Access: Webscraping with R](https://socialdatascience.network/courses/webscraping.html). Upstream materials: `rochelleterman/webscraping-R`.
+
+## What I take away
+
+Prefer APIs when they exist; scrape HTML only with a clear legal/ethical check and selectors you can defend. Selenium is the fallback for pages that refuse to be static.
