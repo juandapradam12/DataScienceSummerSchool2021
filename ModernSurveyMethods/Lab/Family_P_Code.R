@@ -19,7 +19,8 @@ library(autoMrP)
 library(haven)
 library(lme4)
 
-setwd("/home/juan-prada/Documentos/DataScienceSummerSchool2021/ModernSurveyMethods/Lab")
+# Run this script from the Lab/ directory (or set the working directory there).
+# setwd("ModernSurveyMethods/Lab")
 
 data1 <- read_dta("Minaret_B.dta")
 
